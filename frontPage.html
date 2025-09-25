@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Epic Odyssey</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', sans-serif;
+      background: radial-gradient(circle at top, #0f0f0f, #000);
+      color: #fff;
+      overflow-x: hidden;
+    }
+
+    header {
+      text-align: center;
+      padding: 100px 20px;
+      background: linear-gradient(to bottom, #111, transparent);
+    }
+
+    h1 {
+      font-size: 4em;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      background: linear-gradient(to right, #00f0ff, #ff00c8);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      animation: glow 2s infinite alternate;
+    }
+
+    @keyframes glow {
+      from { text-shadow: 0 0 10px #00f0ff; }
+      to { text-shadow: 0 0 20px #ff00c8; }
+    }
+
+    nav {
+      display: flex;
+      justify-content: center;
+      gap: 30px;
+      margin-top: 30px;
+    }
+
+    nav a {
+      color: #aaa;
+      text-decoration: none;
+      font-weight: bold;
+      transition: color 0.3s;
+    }
+
+    nav a:hover {
+      color: #fff;
+    }
+
+    section {
+      padding: 80px 20px;
+      max-width: 800px;
+      margin: auto;
+      text-align: center;
+    }
+
+    .cta {
+      margin-top: 40px;
+      display: inline-block;
+      padding: 15px 30px;
+      background: #00f0ff;
+      color: #000;
+      font-weight: bold;
+      border-radius: 5px;
+      text-decoration: none;
+      box-shadow: 0 0 10px #00f0ff;
+      transition: background 0.3s;
+    }
+
+    .cta:hover {
+      background: #ff00c8;
+      box-shadow: 0 0 15px #ff00c8;
+    }
+
+    footer {
+      text-align: center;
+      padding: 40px 20px;
+      font-size: 0.9em;
+      color: #666;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Epic Odyssey</h1>
+    <nav>
+      <a href="#story">Story</a>
+      <a href="#vision">Vision</a>
+      <a href="#join">Join Us</a>
+    </nav>
+  </header>
+
+  <section id="story">
+    <h2>The Journey Begins</h2>
+    <p>Step into a world where code meets cosmos. This is not just a website—it's a portal to possibility.</p>
+  </section>
+
+  <section id="vision">
+    <h2>Our Vision</h2>
+    <p>We believe in bold ideas, cryptographic clarity, and the power of digital transformation. Join us as we redefine the edge.</p>
+  </section>
+
+  <section id="join">
+    <h2>Ready to Launch?</h2>
+    <a class="cta" href="#">Activate Your Mission</a>
+  </section>
+
+  <footer>
+    &copy; 2025 Epic Odyssey. All rights reserved.
+  </footer>
+</body>
+</html>
