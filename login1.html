@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Insecure Login Page</title>
+  <style>
+    body { font-family: Arial; text-align: center; margin-top: 100px; }
+    input { margin: 10px; padding: 8px; }
+    button { padding: 10px 20px; }
+  </style>
+</head>
+<body>
+  <h2>Login</h2>
+  <input type="text" id="username" placeholder="Username"><br>
+  <input type="password" id="password" placeholder="Password"><br>
+  <button onclick="login()">Login</button>
+  <p id="message"></p>
+
+  <script>
+    const hardcodedUsername = "admin";
+    const hardcodedPassword = "1234";
+
+    function login() {
+      const user = document.getElementById("username").value;
+      const pass = document.getElementById("password").value;
+      const msg = document.getElementById("message");
+
+      if (user === hardcodedUsername && pass === hardcodedPassword) {
+        msg.textContent = "Login successful!";
+        msg.style.color = "green";
+      } else {
+        msg.textContent = "Invalid credentials.";
+        msg.style.color = "red";
+      }
+    }
+  </script>
+</body>
+</html>
