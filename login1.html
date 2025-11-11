@@ -25,8 +25,7 @@
       const msg = document.getElementById("message");
 
       if (user === hardcodedUsername && pass === hardcodedPassword) {
-        msg.textContent = "Login successful!";
-        msg.style.color = "green";
+        window.location.href = "login2.html";
       } else {
         msg.textContent = "Invalid credentials.";
         msg.style.color = "red";
