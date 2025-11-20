@@ -19,18 +19,35 @@
     const hardcodedUsername = "admin";
     const hardcodedPassword = "1234";
 
-    function login() {
-      const user = document.getElementById("username").value;
-      const pass = document.getElementById("password").value;
+    async function login() {
+      const username = document.getElementById("username").value;
+      const password = document.getElementById("password").value;
+      const pageNum = 1;
       const msg = document.getElementById("message");
 
-      if (user === hardcodedUsername && pass === hardcodedPassword) {
-        window.location.href = "login2.html";
-      } else {
-        msg.textContent = "Invalid credentials.";
-        msg.style.color = "red";
+      try {
+        const response = await fetch('http://localhost:8080/user', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ pageNum, username, password })
+        });
+
+        if (response.ok) {
+          const data = await response.json();
+          if (data && data.path) {
+            window.location.href = `${window.location.origin}${data.path}`;
+          } else {
+            errorMsg.textContent = 'Login succeeded but no redirect path provided.';
+          }
+        } else {
+          const errorText = await response.text();
+          errorMsg.textContent = `Login failed: ${errorText || response.statusText}`;
+        }
+      } catch (err) {
+        errorMsg.textContent = `Error: ${err.message}`;
       }
     }
+
   </script>
 </body>
 </html>
