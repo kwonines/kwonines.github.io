@@ -28,7 +28,7 @@
           const response = await fetch('http://localhost:5002/user', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({ pageNum, username, password })
+            body: JSON.stringify({ pageNum, user, pass })
           });
 
           if (response.ok) {
