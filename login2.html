@@ -38,7 +38,7 @@
 
       if (user === hardcodedUsername && hashedPass === hardcodedPasswordHash) {
         try {
-        const response = await fetch('user', {
+        const response = await fetch('/user', {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify({ pageNum, user, pass })
