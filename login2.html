@@ -32,12 +32,32 @@
       const user = document.getElementById("username").value;
       const pass = document.getElementById("password").value;
       const msg = document.getElementById("message");
+      const pageNum = 2;
 
       const hashedPass = await hashPassword(pass);
 
       if (user === hardcodedUsername && hashedPass === hardcodedPasswordHash) {
-        msg.textContent = "Login successful!";
-        msg.style.color = "green";
+        try {
+        const response = await fetch('user', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ pageNum, user, pass })
+        });
+
+        if (response.ok) {
+          const data = await response.json();
+          if (data && data.path) {
+            window.location.href = `${window.location.origin}${data.path}`;
+          } else {
+            errorMsg.textContent = 'Login succeeded but no redirect path provided.';
+          }
+        } else {
+          const errorText = await response.text();
+          errorMsg.textContent = `Login failed: ${errorText || response.statusText}`;
+        }
+      } catch (err) {
+        errorMsg.textContent = `Error: ${err.message}`;
+      }
       } else {
         msg.textContent = "Invalid credentials.";
         msg.style.color = "red";
