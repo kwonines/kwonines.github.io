@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Login</title>
+  <style>
+    body { font-family: Arial; text-align: center; margin-top: 100px; }
+    input { margin: 10px; padding: 8px; }
+    button { padding: 10px 20px; }
+  </style>
+</head>
+<body>
+  <h2>Login</h2>
+  <input type="text" id="username" placeholder="Username"><br>
+  <input type="password" id="password" placeholder="Password"><br>
+  <button onclick="login()">Login</button>
+  <p>I guess I'm not too good at this whole security thing. I got my friend <em>Barnald Worchester</em> to design this one for me.<br>
+    He's really good at this kind of stuff. You should check out his Facebook and see how cool he is!</p>
+  <p id="message"></p>
+
+  <script>
+    async function login() {
+      const user = document.getElementById("username").value;
+      const pass = document.getElementById("password").value;
+      const msg = document.getElementById("message");
+      const pageNum = 3;
+
+        try {
+          const response = await fetch('http://localhost:5002/user', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ pageNum, username, password })
+          });
+
+          if (response.ok) {
+            const data = await response.json();
+            if (data && data.path) {
+              window.location.href = `${window.location.origin}${data.path}`;
+            } else {
+              errorMsg.textContent = 'Login succeeded but no redirect path provided.';
+            }
+          } else {
+            msg.textContent = "Invalid username or password";
+            msg.style.color = "red";
+          }
+        } catch (err) {
+          errorMsg.textContent = `Error: ${err.message}`;
+        }
+    }
+  </script>
+</body>
+</html>
