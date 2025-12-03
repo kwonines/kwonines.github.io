@@ -25,6 +25,7 @@
       const pageNum = 1;
       const msg = document.getElementById("message");
 
+      if (username === hardcodedUsername && password === hardcodedPassword) {
       try {
         const response = await fetch('http://localhost:5002/user', {
           method: 'POST',
@@ -45,6 +46,10 @@
         }
       } catch (err) {
         errorMsg.textContent = `Error: ${err.message}`;
+      }
+    } else {
+        msg.textContent = "Invalid credentials.";
+        msg.style.color = "red";
       }
     }
 
